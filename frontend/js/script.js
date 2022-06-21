@@ -95,11 +95,7 @@ function mauSanPham(ten, anh, mota, gia, id) {
 
 async function loadProduct() {
   dsSanPham.innerHTML="";
-  const products = await fetch("http://localhost:8081/api/products", {
-      headers:{
-          authorization: `Bearer ${localStorage.getItem("token")}`
-      }
-  }).then((res) => res.json());
+  const products = await getProductService();
   console.log(products.length);
   lengthProduct = products.length;
   numberPage = Math.floor((lengthProduct+19)/20);
