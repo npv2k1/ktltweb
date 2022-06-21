@@ -118,8 +118,8 @@ function xacnhandangky(event) {
     matkhaudangkynhaplai.style.border = "1px solid #7b5be4";
     loidangky("loi_mat_khaudangkynhaplai", "");
   }
-  console.log("btn dang ký")
-  
+  console.log("btn dang ký");
+
   if (
     giatriemaildangky == "" ||
     giatrimatkhaudangky == "" ||
@@ -129,13 +129,11 @@ function xacnhandangky(event) {
     giatrimatkhaudangkynhaplai == "" ||
     giatrimatkhaudangkynhaplai.length < 8
   ) {
-   
     return false;
   } else {
     dangky();
     return true;
   }
-
 }
 
 function loidangky(id, message) {
@@ -164,7 +162,6 @@ async function dangnhap(event) {
     });
 }
 async function dangky() {
-  
   const res = await fetch(`${api}/api/auth/register`, {
     method: "POST",
     headers: {
@@ -175,9 +172,7 @@ async function dangky() {
       password: document.getElementById("matkhaudangky").value,
       username: document.getElementById("tendangky").value,
     }),
-  })
+  });
   // reload
   window.location.href = "dangnhap.html";
-
-   
 }

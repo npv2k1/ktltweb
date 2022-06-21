@@ -290,6 +290,9 @@
   .danh_sach_san_pham {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+    .danhmuc {
+      display: inline-flex;
+    }
 }
 @media (min-width: 1024px) {
   .tim-kiem{
@@ -300,9 +303,7 @@ display: block;
       grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .danhmuc {
-    display: inline-flex;
-  }
+ 
 
 }
 
@@ -323,6 +324,4 @@ display: block;
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
-html {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+

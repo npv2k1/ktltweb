@@ -114,11 +114,6 @@
   color: rgb(37 99 235);
 }
 
-.shadow-md {
-  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
 
 .hover\:bg-gray-50:hover {
   
@@ -126,46 +121,10 @@
 }
 
 .hover\:underline:hover {
-  -webkit-text-decoration-line: underline;
   text-decoration-line: underline;
 }
 
-@media (prefers-color-scheme: dark) {
-  .dark\:border-gray-700 {
-    --tw-border-opacity: 1;
-    border-color: rgb(55 65 81 / var(--tw-border-opacity));
-  }
 
-  .dark\:bg-gray-700 {
-    
-    background-color: rgb(55 65 81);
-  }
-
-  .dark\:bg-gray-800 {
-    
-    background-color: rgb(31 41 55);
-  }
-
-  .dark\:text-gray-400 {
-  
-    color: rgb(156 163 175);
-  }
-
-  .dark\:text-white {
-  
-    color: rgb(255 255 255);
-  }
-
-  .dark\:text-blue-500 {
-  
-    color: rgb(59 130 246);
-  }
-
-  .dark\:hover\:bg-gray-600:hover {
-    
-    background-color: rgb(75 85 99);
-  }
-}
 
 @media (min-width: 640px) {
   .sm\:rounded-lg {
@@ -175,7 +134,7 @@
 
 
   /* CSS */
-.button-3 {
+.nutbtn {
   appearance: none;
   background-color: #2ea44f;
   border: 1px solid rgba(27, 31, 35, .15);
@@ -200,28 +159,28 @@
   white-space: nowrap;
 }
 
-.button-3:focus:not(:focus-visible):not(.focus-visible) {
+.nutbtn:focus:not(:focus-visible):not(.focus-visible) {
   box-shadow: none;
   outline: none;
 }
 
-.button-3:hover {
+.nutbtn:hover {
   background-color: #2c974b;
 }
 
-.button-3:focus {
+.nutbtn:focus {
   box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
   outline: none;
 }
 
-.button-3:disabled {
+.nutbtn:disabled {
   background-color: #94d3a2;
   border-color: rgba(27, 31, 35, .1);
   color: rgba(255, 255, 255, .8);
   cursor: default;
 }
 
-.button-3:active {
+.nutbtn:active {
   background-color: #298e46;
   box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
 }
@@ -245,54 +204,9 @@
 
 #thongbao.show {
   visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
-@-webkit-keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
-}
-
-@keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-
-  to {
-    bottom: 0;
-    opacity: 0;
-  }
-}
-
-@keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-
-  to {
-    bottom: 0;
-    opacity: 0;
-  }
+html {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

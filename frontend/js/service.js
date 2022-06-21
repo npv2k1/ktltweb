@@ -8,8 +8,6 @@ const PAGES = {
 };
 // tool
 
-
-
 function numberToVnd(number) {
   var formatter = new Intl.NumberFormat("vn-VN", {
     style: "currency",
@@ -18,11 +16,9 @@ function numberToVnd(number) {
   return formatter.format(number);
 }
 
-
-if (token==="") {
+if (token === "") {
   // navigate to login page
   window.location.href = PAGES.login;
-
 }
 
 const defaultHeader = {
@@ -40,8 +36,15 @@ async function fetchUser() {
   return users;
 }
 
-// product
+// category
+async function getCategoryService() {
+  const categories = await fetch(`${API_URL}/api/categorys`, {
+    headers: { ...defaultHeader },
+  }).then((res) => res.json());
+  return categories;
+}
 
+// product
 async function addCartService(productId) {
   const cartItems = await fetch(`${API_URL}/api/cartItems`, {
     method: "POST",
@@ -53,11 +56,14 @@ async function addCartService(productId) {
   }).then((res) => res.json());
   return cartItems;
 }
-async function getProductService(){
-  const products = await fetch(`${API_URL}/api/products`, {
-    headers: { ...defaultHeader },
-  }).then(res=>res.json())
-  return products
+async function getProductService(categoryId) {
+  const products = await fetch(
+    `${API_URL}/api/products${categoryId ? `?categoryId=${categoryId}` : ""}`,
+    {
+      headers: { ...defaultHeader },
+    }
+  ).then((res) => res.json());
+  return products;
 }
 
 // Cart
@@ -86,7 +92,6 @@ async function updateCartItemService(cartItemId, quantity) {
   }).then((res) => res.json());
   return cartItems;
 }
-
 
 // order
 async function createOrderService() {

@@ -19,14 +19,14 @@ const phantrang1 = document.getElementById("phan-trang-1");
 
 
 
-function isInCart(productId) {
+function isInCart(productId, user) {
   for (let i = 0; i < user?.userCartItems?.length; i++) {
     if (user?.userCartItems[i].product.id === productId) {
       return true;
     }
   }
-  console.log("not in cart");
-  console.log(user)
+  // console.log("not in cart");
+  // console.log(user)
   return false;
 }
 
@@ -55,11 +55,11 @@ async function addCart(productId) {
   }, 3000);
 }
 
-function mauSanPham(ten, anh, mota, gia, id) {
+function mauSanPham(ten, anh, mota, gia, id,loai,trongGio) {
   return `<div id="${id}" class="san_pham">
             <div class="noi_dung_san_pham">
             <p class="ghi_chu">
-              Thực phẩm
+              ${loai ? loai : "Thực phẩm"}
             </p>
             <img class="anh-minh_hoa_san_pham"
               src="${anh}" />
@@ -67,10 +67,12 @@ function mauSanPham(ten, anh, mota, gia, id) {
             <h4 class="ten_san_pham">${ten}</h4>
             <p class="mo_ta_san_pham">${""}</p>
             <div class="gia_san_pham">
-              <p>đ${gia}</p>
+              <p>${numberToVnd(gia)}</p>
             </div>
 
-             <button onClick="addCart(${id},1)" class="nut_them_vao_gio_hang ${isInCart(id)?" disabled ":""}">
+             <button onClick="addCart(${id},1)" class="nut_them_vao_gio_hang ${
+    trongGio ? " disabled " : ""
+  }">
               Thêm vào giỏ hàng
             </button>
            
@@ -79,8 +81,16 @@ function mauSanPham(ten, anh, mota, gia, id) {
 }
 
 async function loadProduct() {
+  
+  
   dsSanPham.innerHTML="";
-  const products = await getProductService();
+  let products;
+  products = await getProductService();
+  if (urlParams.has("categoryId")) {
+    products = await getProductService(urlParams.get("categoryId"));
+  } 
+
+  let user = await fetchUser()
   console.log(products.length);
   lengthProduct = products.length;
   numberPage = Math.floor((lengthProduct+19)/20);
@@ -92,7 +102,9 @@ async function loadProduct() {
         product.image,
         "",
         product.price,
-        product.id
+        product.id,
+        product?.category?.name,
+        isInCart(product.id, user)
       );
     }
   });
@@ -164,4 +176,16 @@ async function veTrangN(newPage)
 }
 
 
-
+// chờ page load xong
+document.addEventListener("DOMContentLoaded", async () => {
+  async function hienThiDanhMuc() {
+    const danhmucs = await getCategoryService();
+    console.log(danhmucs);
+    danhmucs.map((danhmuc) => {
+      const danhmuc1 = document.getElementById("danhmuc-nd");
+      danhmuc1.innerHTML += `<a href="/?categoryId=${danhmuc.id}">${danhmuc.name}</a>`;
+    }
+    );
+  }
+  hienThiDanhMuc();
+})
