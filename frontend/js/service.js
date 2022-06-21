@@ -1,5 +1,5 @@
 // Config
-const API_URL = "http://ltweb:8081";
+const API_URL = "http://ltweb.2k1.org:8081";
 const token = localStorage.getItem("token") || ""; //jwt token
 
 const PAGES = {

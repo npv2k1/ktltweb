@@ -141,11 +141,11 @@ function xacnhandangky(event) {
 function loidangky(id, message) {
   document.getElementById(id).innerHTML = message;
 }
-const api = "http://localhost:8081";
+const api = "http://ltweb.2k1.org:8081";
 
 async function dangnhap(event) {
   event.preventDefault();
-  fetch(`http://localhost:8081/api/auth/login`, {
+  fetch(`${api}/api/auth/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -165,7 +165,7 @@ async function dangnhap(event) {
 }
 async function dangky() {
   
-  const res = await fetch(`http://localhost:8081/api/auth/register`, {
+  const res = await fetch(`${api}/api/auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -178,8 +178,6 @@ async function dangky() {
   })
   // reload
   window.location.href = "dangnhap.html";
-  
-
 
    
 }
