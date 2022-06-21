@@ -19,7 +19,9 @@ async function loadCart() {
   let total = 0;
 
   carts.map((c) => {
-    $(".ds-mat-hang").append(matHang(c));
+     document
+       .querySelector(".ds-mat-hang")
+       .insertAdjacentHTML("beforeend", matHang(c));
     total += parseInt(c?.quantity || 0) * parseInt(c?.product?.price || 0);
   });
   console.log(total);

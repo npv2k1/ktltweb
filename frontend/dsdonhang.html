@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cửa hàng</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/sanpham.css">
+  <link rel="stylesheet" href="css/bocuc.css">
+  <link rel="stylesheet" href="css/style.css">
+
+
+<body>
+  <!-- Than -->
+  <div class="than">
+    <!-- Thanh tren -->
+    <div class="tieu-de" include-html="/components/header.html">
+    </div>
+
+    <div class="noi_dung">
+      <div id="ds-orders">
+        <table class="w-full text-left text-sm text-gray-500">
+          <thead class="bg-gray-50 text-xs uppercase text-gray-700">
+            <tr>
+              <th scope="col" class="px-6 py-3">ID</th>
+              <th scope="col" class="px-6 py-3">Ngày</th>
+              <th scope="col" class="px-6 py-3">SĐT</th>
+              <th scope="col" class="px-6 py-3">Địa chỉ</th>
+              <th scope="col" class="px-6 py-3">Tổng</th>
+              <th scope="col" class="px-6 py-3">Trang thái</th>
+              <th scope="col" class="px-6 py-3">
+                <span class="sr-only">Edit</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="listOrder">
+                   
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="js/config.js"></script>
+  <script src="js/service.js"></script>
+  <script src="js/dsdonhang.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/chung.js"></script>
+
+</body>
+
+
+
+</html>

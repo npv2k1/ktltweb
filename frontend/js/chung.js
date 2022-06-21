@@ -1,6 +1,5 @@
-function chuyenTrang(url) {
-  window.location.href = url;
-}
+let user
+
 
 async function load() {
   user = await fetchUser();
@@ -9,7 +8,9 @@ async function load() {
   console.log('user :>> ', user);
 }
 load();
-
+function chuyenTrang(url) {
+  window.location.href = url;
+}
 async function logout(){
   localStorage.removeItem("token");
   window.location.href = "index.html";
@@ -29,16 +30,21 @@ window.onclick = function (e) {
 
 
 
+/**
+ * Hàm lặp qua tất cả các phần tử trong tài liệu và nếu nó tìm thấy một phần tử có
+ * thuộc tính "include-html", nó thay thế nội dung của phần tử đó bằng nội dung của tệp
+ * được chỉ định bởi giá trị thuộc tính
+ * */
 function includeHTML() {
   var z, i, elmnt, file, xhttp;
-  /* Loop through a collection of all HTML elements: */
+  /* Lặp qua một bộ sưu tập tất cả các phần tử HTML: */
   z = document.getElementsByTagName("*");
   for (i = 0; i < z.length; i++) {
     elmnt = z[i];
-    /*search for elements with a certain atrribute:*/
+    /*tìm kiếm các phần tử có một thuộc tính nhất định:*/
     file = elmnt.getAttribute("include-html");
     if (file) {
-      /* Make an HTTP request using the attribute value as the file name: */
+      /* Thực hiện một yêu cầu HTTP bằng cách sử dụng giá trị thuộc tính làm tên tệp: */
       xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4) {
@@ -48,14 +54,14 @@ function includeHTML() {
           if (this.status == 404) {
             elmnt.innerHTML = "Page not found.";
           }
-          /* Remove the attribute, and call this function once more: */
+          /* Xóa thuộc tính và gọi hàm này một lần nữa: */
           elmnt.removeAttribute("include-html");
           includeHTML();
         }
       };
       xhttp.open("GET", file, true);
       xhttp.send();
-      /* Exit the function: */
+      /* Thoát khỏi hàm: */
       return;
     }
   }

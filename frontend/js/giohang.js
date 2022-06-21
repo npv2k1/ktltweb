@@ -5,36 +5,28 @@
 //     console.log("User",u)
 // }
 //fetchUser()
-let listCart = getCartItem();
-
-async function getCartItem()
-{
-  const carts = await getCartItemsService();
-  // console.log(carts);
-  listCart = carts;
-  return carts;
-}
-
-getCartItem();
-
 function cartItem(cart) {
   return `
-      <div class="ds-san-pham sanpham${cart.id}">
+      <div class="ds-san-pham">
         <div class="tt-san-pham">
           <img src="${cart?.product?.image}" width="60">
           <span class="ten-san-pham-gio-hang">${cart?.product?.name}</span>
         </div>  
         <div class="tt-so-luong">
           <div class="so-luong">
-            <button onclick="updateSL(${cart.id},${-1})">-</button>
-            <input class="${cart.id}" onchange="textChange(${cart.id})" type="number" value="${
-    cart.quantity
-  }">
-            <button onclick="updateSL(${cart.id},${1})">+</button>
+            <button onclick="updateSL(${cart.id},${
+    cart.quantity - 1
+  })">-</button>
+            <input onchange="textChange(${
+              cart.id
+            },this.value)" type="number" value="${cart.quantity}">
+            <button onclick="updateSL(${cart.id},${
+    cart.quantity + 1
+  })">+</button>
           </div>
   
           <div class="tong">
-            <span class="text-xs font-medium tong${cart.id}">${numberToVnd(
+            <span class="text-xs font-medium">${numberToVnd(
               cart?.quantity * cart?.product?.price
             )}</span>
           </div>
@@ -46,85 +38,36 @@ function cartItem(cart) {
     `;
 }
 
-
-
 async function loadCart() {
   document.querySelector(".san-phams").innerHTML = "";
-  await getCartItem();
-
-  // const carts = await getCartItemsService();
-  // console.log(carts);
-  let total = 0;
-  const carts = listCart;
+  const carts = await getCartItemsService();
   console.log(carts);
+  let total = 0;
+  console.log(total);
   carts.map((c) => {
-    $(".san-phams").append(cartItem(c));
+     document
+       .querySelector(".san-phams")
+       .insertAdjacentHTML("beforeend", cartItem(c));
     total += parseInt(c?.quantity || 0) * parseInt(c?.product?.price || 0);
   });
   console.log(total);
-  // document.getElementById("tongTienHang").innerHTML = numberToVnd(total); //`₫${total}`
-  updateTotal();
+  document.getElementById("tongTienHang").innerHTML = numberToVnd(total); //`₫${total}`
 }
 loadCart();
 
-async function updateTotal()
-{
-  let total =0;
-  listCart.map((c) => {
-    $(`.tong${c?.id}`).html(numberToVnd(c?.quantity * c?.product?.price));
-    total += parseInt(c?.quantity || 0) * parseInt(c?.product?.price || 0);
-  });
-  document.getElementById("tongTienHang").innerHTML = numberToVnd(total); //`₫${total}`
+async function updateSL(id, quantity) {
+  const res = await updateCartItemService(id, quantity);
+  console.log(res);
+  loadCart();
 }
 
-async function updateSL(id,dau) {
-  let quantity = Number($(`.${id}`).val());
-  if (quantity > 1 && dau <0)
-  {
-    quantity = quantity+dau;
-    const res = await updateCartItemService(id, quantity);
-    console.log(res);
-    $(`.${id}`).val(quantity);
-    $(`.${id}`).html(quantity);
-    
-    // loadCart();
-  }
-  else 
-  if (quantity<999 && dau >0)
-  {
-    quantity = quantity +dau;
-    const res = await updateCartItemService(id, quantity);
-    console.log(res);
-    $(`.${id}`).val(quantity);
-    $(`.${id}`).html(quantity);
-    
-    // loadCart();
-  }
-  else if (dau ==0)
-  {
-    const res = await updateCartItemService(id, quantity);
-    console.log(res);
-    $(`.${id}`).val(quantity);
-    $(`.${id}`).html(quantity);
-  }
-
-  for (let i =0;i<listCart.length;i++)
-    if (listCart[i].id == id) listCart[i].quantity = quantity;
-    updateTotal();
-    
-}
-
-
-async function textChange(id) {
-  console.log({id});
-  quantity = $(`.${id}`).val();
-  $(`.${id}`).html(quantity);
-  await updateSL(id,0);
+async function textChange(id, quantity) {
+  console.log({ id, quantity });
+  await updateSL(id, quantity);
 }
 
 async function xoa(id) {
   const res = await removeCartItemService(id);
   console.log(res);
-  // loadCart();
-  updateTotal();
+  loadCart();
 }
