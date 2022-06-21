@@ -31,7 +31,7 @@ services:
   client:
     image: nginx
     ports:
-      - 8880:80
+      - 80:80
     volumes:
       - ./frontend:/usr/share/nginx/html
 
