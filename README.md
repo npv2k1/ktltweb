@@ -213,7 +213,7 @@ Nguyễn Thị Thêu - B18DCCN636: Frontend
 
 ## Triển khai sử dụng docker-compose
 
-Để chạy ta sử dụng lênh
+Để chạy ta sử dụng lênh:
 
 ```bash
   docker-compose up
