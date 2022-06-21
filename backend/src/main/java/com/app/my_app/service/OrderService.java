@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.aspectj.weaver.ast.Or;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,10 @@ public class OrderService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ModelMapper modelMapper;
+
 
     @Autowired
     private CartItemService cartItemService;
@@ -119,9 +124,8 @@ public class OrderService {
     }
 
 
-    private Order mapToEntity(final OrderDTO orderDTO, final Order order) {
-        order.setTotal(orderDTO.getTotal());
-        order.setAddress(orderDTO.getAddress());
+    private Order mapToEntity(final OrderDTO orderDTO, Order order) {
+        order = modelMapper.map(orderDTO, Order.class);
         if (orderDTO.getStatus() != null && (order.getStatus() == null || !order.getStatus().getId().equals(orderDTO.getStatus()))) {
             final OrderStatus status = orderStatusRepository.findById(orderDTO.getStatus())
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "status not found"));

@@ -7,6 +7,7 @@ import com.app.my_app.repos.CategoryRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,9 @@ public class CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     public CategoryService() {
 
@@ -86,9 +90,8 @@ public class CategoryService {
      * @param category Đối tượng danh mục mà chúng tôi muốn ánh xạ DTO tới.
      * @return Một đối tượng danh mục
      */
-    private Category mapToEntity(final CategoryDTO categoryDTO, final Category category) {
-        category.setName(categoryDTO.getName());
-        category.setDescription(categoryDTO.getDescription());
+    private Category mapToEntity(final CategoryDTO categoryDTO, Category category) {
+        category = modelMapper.map(categoryDTO, Category.class);
         if(categoryDTO.getCategoryParent()!=null){
             category.setCategoryParent(categoryRepository.findById(categoryDTO.getCategoryParent()).orElse(null));
         }

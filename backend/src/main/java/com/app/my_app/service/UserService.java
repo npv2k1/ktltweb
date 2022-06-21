@@ -27,6 +27,9 @@ public class UserService  implements UserDetailsService {
     private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     private final UserRepository userRepository;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
 
 
     public UserService(final UserRepository userRepository) {
@@ -82,26 +85,14 @@ public class UserService  implements UserDetailsService {
         userRepository.deleteById(id);
     }
 
-    private UserDTO mapToDTO(final User user, final UserDTO userDTO) {
-        userDTO.setId(user.getId());
-        userDTO.setUsername(user.getUsername());
-        userDTO.setEmail(user.getEmail());
-        userDTO.setPassword(user.getPassword());
-        userDTO.setFirstname(user.getFirstname());
-        userDTO.setLastname(user.getLastname());
-        userDTO.setAddress(user.getAddress());
+    private UserDTO mapToDTO(final User user, UserDTO userDTO) {
+        userDTO = modelMapper.map(user, UserDTO.class);
 
         return userDTO;
     }
 
-    private User mapToEntity(final UserDTO userDTO, final User user) {
-        user.setUsername(userDTO.getUsername());
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(userDTO.getPassword());
-        user.setFirstname(userDTO.getFirstname());
-        user.setLastname(userDTO.getLastname());
-        user.setAddress(userDTO.getAddress());
-        user.setPhone(userDTO.getPhone());
+    private User mapToEntity(final UserDTO userDTO, User user) {
+        user = modelMapper.map(userDTO, User.class);
         return user;
     }
 

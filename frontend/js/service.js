@@ -53,6 +53,8 @@ async function addCartService(productId) {
   }).then((res) => res.json());
   return cartItems;
 }
+
+
 // Cart
 async function getCartItemsService() {
   const cartItems = await fetch(`${API_URL}/api/cartItems`, {

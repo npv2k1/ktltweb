@@ -27,4 +27,11 @@ public class Category {
     @JoinColumn(name = "category_parent_id")
     private Category categoryParent;
 
+    public void compare(Category category)
+    {
+        if (category.getCategoryParent()!= null) this.categoryParent= category.getCategoryParent();
+        if (category.getName() != null ) this.name = category.getName();
+        if (category.getDescription() != null) this.description = category.getDescription();
+    }
+
 }

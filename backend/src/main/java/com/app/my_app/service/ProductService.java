@@ -9,6 +9,9 @@ import com.app.my_app.repos.OrderItemRepository;
 import com.app.my_app.repos.ProductRepository;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -20,6 +23,9 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final OrderItemRepository orderItemRepository;
     private final CategoryRepository categoryRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     public ProductService(final ProductRepository productRepository,
             final OrderItemRepository orderItemRepository,
@@ -60,13 +66,8 @@ public class ProductService {
     }
 
 
-    private Product mapToEntity(final ProductDTO productDTO, final Product product) {
-        product.setName(productDTO.getName());
-        product.setDescription(productDTO.getDescription());
-        product.setImage(productDTO.getImage());
-        product.setPrice(productDTO.getPrice());
-        product.setQuantity(productDTO.getQuantity());
-        product.setUnit(productDTO.getUnit());
+    private Product mapToEntity(final ProductDTO productDTO, Product product) {
+        product = modelMapper.map(productDTO, Product.class);
         if (productDTO.getCategory() != null && (product.getCategory() == null || !product.getCategory().getId().equals(productDTO.getCategory()))) {
             final Category category = categoryRepository.findById(productDTO.getCategory())
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "category not found"));

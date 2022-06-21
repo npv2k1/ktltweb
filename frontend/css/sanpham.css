@@ -78,3 +78,25 @@
 }
 
 
+#phan-trang{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+#phan-trang-1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.phantrang button{
+    border: 1px solid;
+    width: 30px;
+    border-radius: 4px;
+}
+.tranghientai{
+    background-color: rgb(53, 148, 199);
+}
