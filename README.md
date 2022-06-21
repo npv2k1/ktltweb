@@ -216,7 +216,7 @@ Nguyễn Thị Thêu - B18DCCN636: Frontend
 Để chạy ta sử dụng lênh:
 
 ```bash
-  docker-compose up
+  docker-compose up -d
 ```
 
 
