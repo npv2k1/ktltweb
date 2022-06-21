@@ -39,6 +39,8 @@ public class OrderService {
     @Autowired
     private UserService userService;
 
+
+
     @Autowired
     private ModelMapper modelMapper;
 
@@ -63,12 +65,6 @@ public class OrderService {
         return orderRepository.findById(id).orElse(null);
     }
 
-    public Long create(final OrderDTO orderDTO) {
-        final Order order = new Order();
-        mapToEntity(orderDTO, order);
-        return orderRepository.save(order).getId();
-    }
-
 
     /**
      * Tạo order mới
@@ -82,6 +78,7 @@ public class OrderService {
         order.setAddress(authService.getCurrentUser().getAddress());
         order.setPhone(authService.getCurrentUser().getPhone());
         order.setUsers(authService.getCurrentUser());
+        order.setStatus(orderStatusRepository.findById(1L).orElse(null));
         Long totalPrice = 0L;
         order.setTotal(totalPrice);
 

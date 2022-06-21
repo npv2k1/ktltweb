@@ -39,12 +39,6 @@ public class OrderResource {
         return ResponseEntity.ok(orderService.get(id));
     }
 
-    @PostMapping
-    @ApiResponse(responseCode = "201")
-    public ResponseEntity<Long> createOrder(@RequestBody @Valid final OrderDTO orderDTO) {
-        return new ResponseEntity<>(orderService.create(orderDTO), HttpStatus.CREATED);
-    }
-
 
     @PostMapping("/create")
     public Order createOrder() {

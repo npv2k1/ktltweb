@@ -47,18 +47,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.cors();
-        // We don't need CSRF for this example
+        // Chúng tôi không cần CSRF cho ví dụ này
         httpSecurity.csrf().disable()
-                // dont authenticate this particular request
+                // không xác thực yêu cầu cụ thể này
                 .authorizeRequests().antMatchers("/authenticate", "/register", "/swagger-ui/**", "/v3/**","/swagger-resources/**", "/", "/js/**", "/css/**", "/img/**", "/demo/**","/api/auth/**").permitAll().
-                // all other requests need to be authenticated
+                // tất cả các yêu cầu khác cần được xác thực
                         anyRequest().authenticated().and().
-                // make sure we use stateless session; session won't be used to
-                // store user's state.
+                // đảm bảo rằng chúng tôi sử dụng phiên không trạng thái; phiên sẽ không được sử dụng để
+                // lưu trữ trạng thái của người dùng.
                         exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-        // Add a filter to validate the tokens with every request
+        //Thêm bộ lọc để xác thực mã thông báo với mọi yêu cầu
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
