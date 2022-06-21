@@ -5,6 +5,7 @@ import com.app.my_app.model.ProductDTO;
 import com.app.my_app.service.ProductService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import java.util.List;
+import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,9 +32,8 @@ public class ProductResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<Product>> getAllProducts() {
- 
-        return ResponseEntity.ok(productService.findAll());
+    public ResponseEntity<List<Product>> getAllProducts(@RequestParam Optional<String> categoryId) {
+        return ResponseEntity.ok(productService.findAll(categoryId));
     }
 
     @GetMapping("/{id}")

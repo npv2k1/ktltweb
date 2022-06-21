@@ -8,6 +8,7 @@ import com.app.my_app.repos.CategoryRepository;
 import com.app.my_app.repos.OrderItemRepository;
 import com.app.my_app.repos.ProductRepository;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -40,8 +41,10 @@ public class ProductService {
      *
      * @return Danh sách tất cả các sản phẩm trong cơ sở dữ liệu.
      */
-    public List<Product> findAll() {
-        return productRepository.findAll();
+    public List<Product> findAll(Optional<String> categoryId) {
+        if(categoryId.orElse("").equals("")) return productRepository.findAll();
+        return productRepository.findAllByCategory_Id(Long.parseLong(categoryId.get()));
+
     }
 
     public Product get(final Long id) {
