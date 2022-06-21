@@ -1,0 +1,53 @@
+name: ktltweb
+on:
+  push:
+    branches: [master]
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{secrets.NODE_VERSION}}
+      - name: Install Dependencies
+        run: |
+          npm ci
+      - name: Copy ENV
+        run: |
+          cp env.temp .env
+      - name: Build
+        run: |
+          npm run build
+      - name: deploy to server
+        uses: appleboy/ssh-action@master
+        env:
+          PROJECT_FOLDER: '${{secrets.PROJECT_FOLDER}}'
+          GIT_ACCOUNT_USERNAME: '${{secrets.GIT_ACCOUNT_USERNAME}}'
+          GIT_ACCOUNT_TOKEN: '${{secrets.GIT_ACCOUNT_TOKEN}}'
+          GIT_URL: '${{secrets.GIT_URL}}'
+          GIT_BRANCH_NAME: '${{secrets.GIT_BRANCH_NAME}}'
+          SERVER_USER_SERVICE: '${{secrets.SERVER_USER_SERVICE}}'
+        with:
+          host: ${{secrets.SERVER_IP}}
+          username: ${{secrets.SSH_USERNAME}}
+          password: ${{secrets.SSH_PASSWORD }}
+          port: ${{secrets.SSH_PORT}}
+          envs: PROJECT_FOLDER,GIT_ACCOUNT_USERNAME,GIT_ACCOUNT_TOKEN,GIT_URL,GIT_BRANCH_NAME,SERVER_USER_SERVICE
+          script: |
+            echo $PROJECT_FOLDER
+            cd $PROJECT_FOLDER
+            git pull https://${GIT_ACCOUNT_USERNAME}:${GIT_ACCOUNT_TOKEN}@$GIT_URL $GIT_BRANCH_NAME
+            yarn            
+            yarn build
+            yarn run:pm2
+            chown $SERVER_USER_SERVICE `:` $PROJECT_FOLDER
+            chmod og+r $PROJECT_FOLDER
+            
