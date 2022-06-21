@@ -1,7 +1,7 @@
 name: ktltweb
 on:
   push:
-    branches: [master]
+    branches: [develop]
 jobs:
   # This workflow contains a single job called "build"
   build:
