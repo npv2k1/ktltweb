@@ -7,6 +7,9 @@ import com.app.my_app.repos.OrderItemRepository;
 import com.app.my_app.repos.OrderRepository;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -17,6 +20,9 @@ public class OrderItemService {
 
     private final OrderItemRepository orderItemRepository;
     private final OrderRepository orderRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     public OrderItemService(final OrderItemRepository orderItemRepository,
             final OrderRepository orderRepository) {
@@ -51,10 +57,8 @@ public class OrderItemService {
     }
 
 
-    private OrderItem mapToEntity(final OrderItemDTO orderItemDTO, final OrderItem orderItem) {
-        orderItem.setQuantity(orderItemDTO.getQuantity());
-        orderItem.setName(orderItemDTO.getName());
-        orderItem.setPrice(orderItemDTO.getPrice());
+    private OrderItem mapToEntity(final OrderItemDTO orderItemDTO, OrderItem orderItem) {
+        orderItem = modelMapper.map(orderItemDTO, OrderItem.class);
         if (orderItemDTO.getOrder() != null && (orderItem.getOrder() == null || !orderItem.getOrder().getId().equals(orderItemDTO.getOrder()))) {
             final Order order = orderRepository.findById(orderItemDTO.getOrder())
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "order not found"));

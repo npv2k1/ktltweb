@@ -5,6 +5,8 @@ import com.app.my_app.model.CartItemDTO;
 import com.app.my_app.repos.CartItemRepository;
 import com.app.my_app.repos.ProductRepository;
 import com.app.my_app.repos.UserRepository;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,9 @@ public class CartItemService {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     public CartItemService(final CartItemRepository cartItemRepository,
                            final UserRepository userRepository, final ProductRepository productRepository) {

@@ -7,6 +7,7 @@ import com.app.my_app.repos.OrderStatusRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,9 @@ public class OrderStatusService {
 
     @Autowired
     private OrderStatusRepository orderStatusRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     public OrderStatusService() {}
 
