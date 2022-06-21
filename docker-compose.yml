@@ -2,6 +2,7 @@ version: "3.3"
 services:
   db:
     image: mysql:5.7
+    restart: always
     ports:
       - 3308:3306
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
@@ -11,10 +12,8 @@ services:
     volumes:
       - backenddb:/var/lib/mysql
   api:
-    # build:
-    #   context: ./backend
-    #   dockerfile: Dockerfile
     image: maven:3.8.6-jdk-11
+    restart: always
     working_dir: /app
     depends_on:
       - db
@@ -34,7 +33,6 @@ services:
       - 80:80
     volumes:
       - ./frontend:/usr/share/nginx/html
-
   root_db:
     image: mysql:5.7
     volumes:
@@ -51,10 +49,10 @@ services:
       test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
       timeout: 20s
       retries: 10
-
   nocodb:
     depends_on:
       - root_db
+      - db    
     image: nocodb/nocodb:latest
     ports:
       - "8080:8080"
