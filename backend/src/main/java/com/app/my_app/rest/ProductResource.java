@@ -36,6 +36,13 @@ public class ProductResource {
         return ResponseEntity.ok(productService.findAll(categoryId));
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<Product>> searchAllProducts(@RequestParam Optional<String> name) {
+        return ResponseEntity.ok(productService.searchAll(name));
+    }
+
+
+
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProduct(@PathVariable final Long id) {
         return ResponseEntity.ok(productService.get(id));

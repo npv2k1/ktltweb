@@ -47,6 +47,13 @@ public class ProductService {
 
     }
 
+    public List<Product> searchAll(Optional<String> name) {
+        if(name.orElse("").equals("")) return productRepository.findAll();
+        return productRepository.findByNameIsContaining(name.get());
+
+    }
+
+
     public Product get(final Long id) {
         return productRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
