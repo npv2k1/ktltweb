@@ -54,8 +54,7 @@ services:
 
   nocodb:
     depends_on:
-      root_db:
-        condition: service_healthy
+      - root_db
     image: nocodb/nocodb:latest
     ports:
       - "8080:8080"
