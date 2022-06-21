@@ -27,5 +27,5 @@ jobs:
           script: |
             echo $PROJECT_FOLDER
             cd $PROJECT_FOLDER
-            git pull https://${GIT_ACCOUNT_USERNAME}:${GIT_ACCOUNT_TOKEN}@$GIT_URL $GIT_BRANCH_NAME
+            git pull https://${GIT_ACCOUNT_TOKEN}@github.com/${GIT_ACCOUNT_USERNAME}/${GIT_REPO} $GIT_BRANCH_NAME
             
