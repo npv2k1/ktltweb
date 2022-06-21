@@ -1,0 +1,105 @@
+body {
+    background-color: rgba(106, 171, 190, 0.897);
+}
+.hoa_don_nguoi_dung {
+    border: 1px solid black;
+    width: 500px;
+    margin: 50px auto;
+    min-height: 500px;
+    background-color: rgb(253, 253, 253);
+    border-radius: 10px;
+}
+
+
+.tieu_de{
+    margin-top: 5px;
+    font-size: large;
+    text-align: center;
+    
+}
+.hoa_don_thong_tin {
+    display:gird;
+}
+
+.dien_thong_tin {
+    margin-top: 3%;
+    margin-left: 25px;
+    font-size: larger;
+    width: 500px;
+}
+
+.noi-dung{
+    background-color: #ccc;
+
+}
+/* .ship{
+    margin-top: 3%;
+    text-align: center;
+    font-size: larger;
+    min-width: 400px;
+    height: 300px;
+   
+}
+.ship .form-group{
+    margin-top: 1%;
+    /* display: flex; */
+
+   
+/* }
+.form-group .ship-title{
+    margin-left: 600px;
+    
+    float: left;
+}
+
+.ship-input::placeholder{
+    font-size: 11px;
+    color: #BBBBBB;
+}
+.m-btn{
+    margin-left: 700px;
+}
+.m-btn .m-btn-pay{
+    margin-left: 1%;
+}
+
+
+ 
+.dialog{
+    display: none; 
+    position: fixed;
+   
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 500px;
+    overflow: auto;
+    
+    background-color:aquamarine;
+   
+} 
+
+
+.close{
+    
+    position: absolute;
+   
+    right: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    font-size: 16px;
+
+    color: red;
+    opacity: .6;
+    cursor: pointer;
+    border-radius:0px 4px 0px 4px;
+}
+.close:hover ,.close:focus {
+    background-color: rgb(233, 147, 147);
+    cursor: pointer;
+} */ 

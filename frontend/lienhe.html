@@ -1,0 +1,149 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Store</title>
+  <link rel="stylesheet" href="css/sanpham.css">
+  <link rel="stylesheet" href="css/bocuc.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/lienhe.css">
+
+<body>
+
+  <div class="than">
+    <div class="tieu-de">
+      <div class="bieu-tuong">
+        <a href="/"><img src="https://cdn-icons-png.flaticon.com/512/4163/4163765.png" alt="thuc pham"></a>
+        <!-- Menu ds các loại mặt hàng -->
+        <div class="danhmuc">
+          <button class="danhmuc-nut" onclick="hienThiDanhMuc()">Danh mục</button>
+          <div class="danhmuc-noidung" id="danhmuc-nd">
+            <a href="#">Nước uống</a>
+            <a href="#">Rau củ</a>
+            <a href="#">Thịt và cá</a>
+            <a href="#">Trứng và sữa</a>
+            <a href="#">Bánh</a>
+            <a href="#">Gia vị</a>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="tim-kiem">
+        <form>
+          <div>
+            <input placeholder="Tìm kiếm sản phẩm bạn muốn tại đây" value="" />
+          </div>
+        </form>
+      </div>
+      <ul class="dieu-huong">
+        <li>
+          <a class="" href="/donhang.html">Đơn hàng</a>
+        </li>
+        <li>
+          <a class="" href="/lienhe.html">Liên hệ</a>
+        </li>
+        <div class="dieu-huong-phai">
+          <div class="bieu_tuong_gio_hang">
+            <a href="/giohang.html">
+              <img class="dieuhuong"
+                src="https://thumbs.dreamstime.com/b/shopping-cart-icon-trolley-icon-shopping-cart-icon-trolley-icon-vector-illustration-isolated-white-background-163727286.jpg"
+                alt="">
+              <div class='giohang-soluong'>5</div>
+            </a>
+          </div>
+          <div class="nut-dang-nhap">
+            <a href="/dangnhap.html">
+              <button>
+                <img class="dieuhuong" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+                  alt="">
+              </button>
+            </a>
+          </div>
+        </div>
+
+      </ul>
+    </div>
+    <!-- noi dung -->
+    <div class="noi_dung">
+      <div class="giao-dien-ngoai-noi-dung">
+        <div class="giao-dien-trong-noi-dung">
+          <div class="thong-tin-lien-he-shop">
+            <div class="anh-lien-he-minh-hoa">
+                  <img alt="" aria-hidden="true" src="https://www.helpsystems.com/sites/default/files/media/hs-contact-us-figure.png">
+            </div>
+            <div class="dia-chi-lien-he">
+              <span class="tieu-de-dia-chi">Địa chỉ</span>
+              <span class="gia-tri-dia-chi">Nguyễn Trãi, quận Hà Đông, Hà Nội</span>
+            </div>
+            <div class="dia-chi-lien-he">
+              <span class="tieu-de-dia-chi">Số điện thoại</span>
+              <span class="gia-tri-dia-chi">+129290122122</span></div>
+            <div class="dia-chi-lien-he">
+              <span class="tieu-de-dia-chi">Đường dẫn</span>
+              <div class="duong-dan-dia-chi">
+                <span class="gia-tri-dia-chi">https://redq.io</span>
+                <a class="duong-dan" href="https://redq.io" target="_blank" rel="noreferrer"> Visit This Site </a>
+              </div>
+            </div>
+            <div class="dia-chi-lien-he">
+              <span class="tieu-de-dia-chi">Theo dõi cửa hàng</span>
+              <div class="gia-tri-dia-chi-theo-doi">
+                <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" class="theo-doi-cua-hang">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
+                    <path data-name="_ionicons_svg_logo-facebook (6)" d="M11.338 0H.662A.663.663 0 000 .663v10.674a.663.663 0 00.662.662H6V7.25H4.566V5.5H6V4.206a2.28 2.28 0 012.459-2.394c.662 0 1.375.05 1.541.072V3.5H8.9c-.753 0-.9.356-.9.881V5.5h1.794L9.56 7.25H8V12h3.338a.663.663 0 00.662-.663V.662A.663.663 0 0011.338 0z" fill="currentColor"></path>
+                  </svg>
+                </a>
+                <a href="https://twitter.com/home" target="_blank" rel="noreferrer" class="theo-doi-cua-hang">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.747 12" >
+                    <path data-name="_ionicons_svg_logo-twitter (5)" d="M14.747 1.422a6.117 6.117 0 01-1.737.478A3.036 3.036 0 0014.341.225a6.012 6.012 0 01-1.922.734 3.025 3.025 0 00-5.234 2.069 2.962 2.962 0 00.078.691A8.574 8.574 0 011.026.553a3.032 3.032 0 00.941 4.044 2.955 2.955 0 01-1.375-.378v.037A3.028 3.028 0 003.02 7.225a3.046 3.046 0 01-.8.106 2.854 2.854 0 01-.569-.056 3.03 3.03 0 002.828 2.1 6.066 6.066 0 01-3.759 1.3 6.135 6.135 0 01-.722-.044A8.457 8.457 0 004.631 12a8.557 8.557 0 008.616-8.619c0-.131 0-.262-.009-.391a6.159 6.159 0 001.509-1.568z" fill="currentColor"></path>
+                  </svg>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" class="theo-doi-cua-hang">
+                  <svg data-name="nhom 96" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
+                    <path data-name="duongdan 1" d="M8.5 1A2.507 2.507 0 0111 3.5v5A2.507 2.507 0 018.5 11h-5A2.507 2.507 0 011 8.5v-5A2.507 2.507 0 013.5 1h5m0-1h-5A3.51 3.51 0 000 3.5v5A3.51 3.51 0 003.5 12h5A3.51 3.51 0 0012 8.5v-5A3.51 3.51 0 008.5 0z"></path>
+                    <path data-name="duongdan 2" d="M9.25 3.5a.75.75 0 11.75-.75.748.748 0 01-.75.75zM6 4a2 2 0 11-2 2 2 2 0 012-2m0-1a3 3 0 103 3 3 3 0 00-3-3z"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="thong-tin-nguoi-dung">
+            <h1 class="tieu-de-thong-tin-nguoi-dung">Câu hỏi, bình luận hoặc mối quan tâm?</h1>
+            <form novalidate="">
+              <div class="dau-vao-thong-tin-nguoi-dung">
+                <div>
+                  <label for="ten" class="tieu-de-dau-vao">Tên</label>
+                  <input id="ten" name="ten" type="text" class="dau-vao" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-invalid="false"></div>
+                <div>
+                  <label for="email" class="tieu-de-dau-vao">Email</label>
+                  <input id="email" name="email" type="email" class="dau-vao" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-invalid="false"></div>
+              </div>
+              <div class="phan-anh">
+                <label for="chude" class="tieu-de-dau-vao">Chủ đề</label>
+                <input id="chude" name="chude" type="text" class="dau-vao" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-invalid="false"></div>
+              <div class="phan-anh">
+                <label for="mota" class="tieu-de-dau-vao-mota">Mô tả</label>
+                <textarea id="mota" name="mota" class="dau-vao-mota" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" rows="4"></textarea>
+              </div>
+              <button data-variant="normal" class="gui-lien-he">
+                Gửi
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- partial -->
+
+  </script>
+
+  </script>
+  
+</body>
+
+</html>

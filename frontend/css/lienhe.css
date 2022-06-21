@@ -1,0 +1,189 @@
+.giao-dien-ngoai-noi-dung {
+	width: 100%;
+    --tw-bg-opacity: 1;
+    background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+}
+
+.giao-dien-trong-noi-dung {
+    display: flex; 
+    padding-left: 1.25rem;
+    padding-right: 1.25rem; 
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem; 
+    display: flex; 
+    flex-direction: row; 
+    width: 100%; 
+    max-width: 80rem;    
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.thong-tin-lien-he-shop {
+    background-color: rgba(255, 255, 255, 0.767);
+    margin-left: 25px;
+    width: 35%;
+    height: 100vh;
+    display: none;
+}
+.anh-lien-he-minh-hoa img {
+    display: block;
+    max-width: 100%; 
+    width: initial; 
+    height: initial; 
+    background: none; 
+    opacity: 1; 
+    border: 0px; 
+    margin: 0px; 
+    padding: 0px;
+}
+.dia-chi-lien-he {
+    margin-left: 10px;
+	margin-bottom: 2rem;
+    display: flex;
+	flex-direction: column;
+}
+.tieu-de-dia-chi {
+    margin-bottom: 0.75rem;
+	font-weight: 600;
+}
+.gia-tri-dia-chi {
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+}
+
+.duong-dan-dia-chi {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.duong-dan-dia-chi .duong-dan {
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    font-weight: 600; 
+    color: rgb(30, 128, 30);
+    margin-right: 10px;
+}
+
+.duong-dan-dia-chi .duong-dan:hover {
+    color: rgba(40, 155, 46, 0.788);
+}
+.gia-tri-dia-chi-theo-doi {
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    display: flex;
+}
+
+.gia-tri-dia-chi-theo-doi a {
+    margin-right: 10px;
+}
+
+.theo-doi-cua-hang {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms; 
+}
+
+.theo-doi-cua-hang svg {
+    width: 1rem; 
+    height: 1rem; 
+}
+
+.thong-tin-nguoi-dung {
+    margin-left: 20px;
+    width: 100%;
+    padding: 1.25rem; 
+    margin-bottom: 2rem; 
+    order: 1; 
+    /* width: 100%;  */
+    background-color: rgba(255, 255, 255, 0.767);
+    height: 100vh;
+}
+
+.tieu-de-thong-tin-nguoi-dung {
+    margin-bottom: 1.75rem; 
+    font-size: 1.25rem;
+    line-height: 1.75rem; 
+    font-weight: 700; 
+}
+
+.dau-vao-thong-tin-nguoi-dung {
+    display: grid; 
+    grid-template-columns: repeat(1, minmax(0, 1fr)); 
+    gap: 1.5rem; 
+}
+.tieu-de-dau-vao {
+    display: block;
+    margin-bottom: 0.75rem; 
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    font-weight: 600; 
+    line-height: 1; 
+}
+.dau-vao {
+    display: flex; 
+    padding-left: 1rem;
+    padding-right: 1rem; 
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform; 
+    transition-duration: 300ms; 
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    align-items: center; 
+    width: 100%; 
+    appearance: none; 
+}
+
+.tieu-de-dau-vao-mota {
+    display: block; 
+    margin-bottom: 0.75rem; 
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    font-weight: 600; 
+    line-height: 1; 
+}
+
+.dau-vao-mota {
+    display: flex; 
+    padding: 0.75rem 1rem; 
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform; 
+    transition-duration: 300ms; 
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    align-items: center; 
+    width: 100%; 
+    border-radius: 0.25rem; 
+    appearance: none; 
+}
+
+.phan-anh {
+    margin-top: 20px;
+}
+
+.gui-lien-he {
+    display: inline-flex; 
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform; 
+    transition-duration: 300ms; 
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
+    font-weight: 600; 
+    line-height: 1; 
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 0.25rem; 
+    outline: 0; 
+    margin: 20px;
+    width: 150px;
+    height: 50px;
+    background-color:  rgba(40, 155, 46, 0.788);
+}
+
+.gui-lien-he:hover {
+    background-color: rgb(30, 128, 30);
+    color: white;
+}
+@media (min-width: 768px) {
+    .thong-tin-lien-he-shop{
+        display: block;
+    }
+}

@@ -1,0 +1,72 @@
+version: "3.8"
+services:
+  db:
+    image: mysql:5.7
+    ports:
+      - 3308:3306
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_DATABASE: apps
+    volumes:
+      - backenddb:/var/lib/mysql
+  api:
+    # build:
+    #   context: ./backend
+    #   dockerfile: Dockerfile
+    image: maven:3.8.6-jdk-11
+    working_dir: /app
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/apps?autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: admin123
+    ports:
+      - 8081:8081
+    volumes:
+      - backendm2:/root/.m2
+      - ./backend:/app
+    command: mvn clean spring-boot:run
+  client:
+    image: nginx
+    ports:
+      - 8880:80
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+
+  root_db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: root_db
+      MYSQL_USER: noco
+      MYSQL_PASSWORD: password
+      MYSQL_TCP_PORT: 3307
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
+
+  nocodb:
+    depends_on:
+      root_db:
+        condition: service_healthy
+    image: nocodb/nocodb:latest
+    ports:
+      - "8080:8080"
+    restart: always
+    volumes:
+      - nc_data:/usr/app/data
+    environment:
+      NC_DB: "mysql2://root_db:3307?u=noco&p=password&d=root_db"
+volumes:
+  backendm2:
+  backenddb:
+  db_data: 
+  nc_data: 
+

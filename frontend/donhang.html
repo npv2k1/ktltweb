@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Đơn hàng</title>
+    <link rel="stylesheet" href="css/bocuc.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/donhang.css">
+    <link rel="stylesheet" href="css/style.css">
+<body>
+    <!-- Than -->
+    <div class="than">
+        <!-- Thanh tren -->
+        <div class="tieu-de" include-html="/components/header.html">
+        </div>
+
+        <div class="noi_dung">
+            <div class="than don-hang">
+                <div class="trangthai">Trạng thái: Đã xác nhận</div>
+                <div>
+                    <a href="index.html" class="quaylai">Quay về trang chủ</a>
+                </div>
+            
+                <div>
+                    <div class="mavangay">
+                        <div class="madonhang">
+                            <h4>Mã đơn hàng</h4>
+                            <p id="orderId">0</p>
+                        </div>
+                        <div class="ngay">
+                            <h4>Ngày</h4>
+                            <p id="ngayMua">null</p>
+                        </div>
+                    </div>
+                    <div class="tongvaphuongthuc">
+                        <div class="phuongthucthanhtoan">
+                            <h4> Phương thức thanh toán</h4>
+                            Thanh toán khi nhận hàng                    
+                        </div>
+                        <div class="tong">
+                            <h4>Tổng tiền</h4>
+                            <span id="tongTienH"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tongtienvahoadon">
+                    <div class="tongtien">
+                        <div class="chuchinh">Tổng tiền</div>
+
+                        <table>
+                            <tr>
+                                <td>Tổng tiền hàng: </td>
+                                <td id="tongTienHang"></td>
+                            </tr>
+                            <tr>
+                                <td>Phí vận chuyển: </td>
+                                <td id="phiVanChuyen"></td>
+                            </tr>
+                            <tr>
+                                <td>Tổng: </td>
+                                <td id="tongTien"></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div class="chitiet">
+                        <div class="chuchinh"> Chi tiết hàng hóa</div>
+                        <br>
+                        Tổng mặt hàng: <span id="tongMatHang">0</span>
+                    </div>
+                </div>
+                <div class="bang">
+                    <table id="danhsachmathang">
+                        <tr>
+                            <th>Tên sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Giá</th>
+                            <th>Tổng</th>
+                        </tr>
+                        <!-- Order Items -->
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- partial -->
+
+    </script>
+
+    </script>
+
+    <script src="js/script.js"></script>
+    <script src="/js/service.js"></script>
+    <script src="/js/thanhtoan.js"></script>
+    <script src="/js/chung.js"></script>
+</body>
+
+<script>
+   async function getOrder(){
+        var url_string = window.location.href
+       var url = new URL(url_string);
+       var c = url.searchParams.get("id");
+       console.log(c);
+       let order = await getOrderByIdService(c)
+       console.log("Order", order)
+
+        document.getElementById("orderId").innerHTML = order.id;
+        order.orderItems.forEach(item => {
+            console.log(item)
+            document.getElementById("danhsachmathang").innerHTML += `
+            <tr>
+                <td>${item.product.name}</td>
+                <td>${item.quantity}</td>
+                <td>${numberToVnd(item.price)}</td>
+                <td>${numberToVnd(item.quantity* item.price)}</td>
+            </tr>
+            `
+        });
+
+        document.getElementById("tongTienHang").innerHTML = numberToVnd(order.total );
+        document.getElementById("phiVanChuyen").innerHTML = numberToVnd(15000);
+        document.getElementById("tongTien").innerHTML = numberToVnd(order.total+15000);
+        document.getElementById("tongTienH").innerHTML = numberToVnd(order.total+15000);
+        document.getElementById("ngayMua").innerHTML = new Date(order.createdAt).toLocaleDateString();
+        document.getElementById("tongMatHang").innerHTML = order.orderItems.length;
+
+   }
+   getOrder();
+    
+</script>
+
+</html>

@@ -1,0 +1,189 @@
+.gio-hang {
+  background-color: #F3F4F6;
+  max-width: 28rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  display: flex;
+}
+@media (min-width: 768px) {
+  .gio-hang {
+    max-width: 28rem;
+  }
+}
+
+.nut-dat-hang {
+  background-color: #3B82F6;
+  color: #ffffff;
+  width: 100%;
+  height: 3rem;
+  border-radius: 0.25rem;
+  
+
+}
+.nut-dat-hang:hover {
+  background-color: #2563EB;
+}
+
+.tt-don-hang {
+  display: flex;
+  padding-top: 0.75rem;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 100%;
+}
+.tt-don-hang > label {
+  color: #9CA3AF;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.tt-don-hang > p {
+  color: #9CA3AF;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.gia-don-hang {
+  overflow: visible;
+  padding: 1.25rem;
+  background-color: #1F2937;
+  border-radius: 0.25rem;
+}
+.gia-don-hang>span{
+  display: block;
+  padding-bottom: 0.75rem;
+  color: #F3F4F6;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+
+}
+
+.ds-san-pham {
+  display: flex;
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #E5E7EB;
+  padding-bottom: 1.5rem;
+}
+.ds-san-pham .tt-san-pham {
+  display: flex;
+  align-items: center;
+  width: 40%;
+}
+
+.tt-san-pham > img {
+  border-radius: 9999px;
+}
+.tt-san-pham span {
+  margin-left: 0.75rem;
+  font-weight: 500;
+
+}
+.tt-so-luong{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+  
+}
+.so-luong {
+  border: 1px solid rgb(143, 139, 139);
+  width: 120px;
+  /* height: 45px; */
+  background-color: #45a54dd0;
+  display: flex;
+  margin-right: 15px;
+  border-radius: 5px;
+}
+
+.so-luong > input {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #F3F4F6;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  width: 2rem;
+  height: 1.5rem;
+  /* border-radius: 0.25rem; */
+  border-width: 1px;
+  min-width: 4rem;
+
+}
+
+.so-luong>button {
+  width: 30px;
+  background-color: rgba(35, 150, 35, 0.692);
+}
+.so-luong>button:hover{
+  background-color: rgba(16, 138, 16, 0.692);
+  color: white;
+  align-items: center;
+}
+.tt-so-luong > * {
+  margin-left: 2rem;
+  
+}
+
+.san-phams{
+  padding: 1.25rem;
+  grid-column: span 2 / span 2;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.tt-gio-hang {
+  padding: 1rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  width: 100%;
+  
+
+}
+.tt-gio-hang > div{
+  gap: 0.5rem;
+}
+
+
+.tieude {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+}
+
+.tong {
+  width: 10%;
+}
+.xoa {
+  width: 5%;
+}
+.xoa > button {
+  width: 35px;
+  height: 30px;
+  background-color: rgba(35, 150, 35, 0.692);
+  border-radius: 5px;
+}
+
+.xoa > button:hover {
+  background-color: rgba(16, 138, 16, 0.692);
+  color: white;
+}
+
+
+@media (min-width: 768px) { 
+  .tt-gio-hang>div {
+  display: grid; 
+grid-template-columns: repeat(3, minmax(0, 1fr));
+  } 
+  .tt-gio-hang {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+ }

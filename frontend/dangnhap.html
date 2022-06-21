@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/dangnhap.css" />
+
+
+    <title>Đăng nhập và đăng ký</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+
+    <div class="khung">
+        <div class="bieumaus">
+            <!-- Đăng nhập -->
+            <div class="bieumau dangnhap">
+                <span class="tieude">Đăng nhập</span>
+                <form onsubmit="dangnhap(event)">
+                    <div class="truongnhap">
+                        <input name="username" type="text" id="email" placeholder="Nhập email của bạn">
+                    </div>
+                    <div class="loi" id="loi_email"></div>
+                    <div class="truongnhap">
+                        <input name="password" type="password" id="matkhau" class="password"
+                            placeholder="Nhập mật khẩu của bạn">
+                    </div>
+                    <div class="loi" id="loi_mat_khau"></div>
+                    <div class="truongnhap button">
+                        <input type="submit" value="Đăng nhập">
+                    </div>
+                </form>
+
+                <div class="dangnhap-dangky">
+                    <span class="chu">Không có tài khoản?
+                        <a href="#" class="chu dangky-link">Đăng ký ngay bây giờ</a>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Đăng ký -->
+            <div class="bieumau dangky">
+                <span class="tieude">Đăng ký</span>
+
+                <form  onsubmit="xacnhandangky(event);">
+                    <div class="truongnhap">
+                        <input type="text" id="emaildangky" placeholder="Nhập email của bạn">
+                    </div>
+                    <div class="loi" id="loi_emaildangky"></div>
+                    <div class="truongnhap">
+                        <input type="text" id="tendangky" placeholder="Nhập tên của bạn">
+                    </div>
+                    <div class="loi" id="loi_tendangky"></div>
+                    <div class="truongnhap">
+                        <input type="password" id="matkhaudangky" class="password" placeholder="Nhập mật khẩu của bạn">
+                    </div>
+                    <div class="loi" id="loi_mat_khaudangky"></div>
+                    <div class="truongnhap">
+                        <input type="password" id="matkhaudangkynhaplai" class="password"
+                            placeholder="Nhập lại mật khẩu của bạn">
+                    </div>
+                    <div class="loi" id="loi_mat_khaudangkynhaplai"></div>
+
+                    <div class="truongnhap button">
+                        <input type="submit" value="Đăng ký">
+                    </div>
+                </form>
+
+                <div class="dangnhap-dangky">
+                    <span class="chu">Bạn đã có tài khoản?
+                        <a href="#" class="chu dangnhap-link">Đăng nhập ngay bây giờ?</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/dangnhap.js" type="text/javascript"></script>
+
+
+</body>
+
+</html>
