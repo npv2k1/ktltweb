@@ -1,0 +1,32 @@
+name: ktltweb
+on:
+  push:
+    branches: [master]
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy to server
+        uses: appleboy/ssh-action@master
+        env:
+          PROJECT_FOLDER: '${{secrets.PROJECT_FOLDER}}'
+          GIT_ACCOUNT_USERNAME: '${{secrets.GIT_ACCOUNT_USERNAME}}'
+          GIT_ACCOUNT_TOKEN: '${{secrets.GIT_ACCOUNT_TOKEN}}'
+          GIT_URL: '${{secrets.GIT_URL}}'
+          GIT_BRANCH_NAME: '${{secrets.GIT_BRANCH_NAME}}'
+          SERVER_USER_SERVICE: '${{secrets.SERVER_USER_SERVICE}}'
+          GIT_REPO: '${{secrets.GIT_REPO}}'
+        with:
+          host: ${{secrets.SERVER_IP}}
+          username: ${{secrets.SSH_USERNAME}}
+          password: ${{secrets.SSH_PASSWORD }}
+          port: ${{secrets.SSH_PORT}}
+          envs: PROJECT_FOLDER,GIT_ACCOUNT_USERNAME,GIT_ACCOUNT_TOKEN,GIT_URL,GIT_BRANCH_NAME,SERVER_USER_SERVICE,GIT_REPO
+          script: |
+            echo $PROJECT_FOLDER
+            cd $PROJECT_FOLDER
+            git pull https://${GIT_ACCOUNT_TOKEN}@github.com/${GIT_ACCOUNT_USERNAME}/${GIT_REPO} $GIT_BRANCH_NAME
+            
