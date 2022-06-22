@@ -10,10 +10,11 @@
   </div>
 </div>
 <div class="tim-kiem">
-  <form>
+  <form onsubmit="handleSearch(event)">
     <div>
-      <input placeholder="Tìm kiếm sản phẩm bạn muốn tại đây" value="" />
-    </div>
+      <input id="search" name="search" placeholder="Tìm kiếm sản phẩm bạn muốn tại đây" value="" />
+      <button type="submit" hidden></button>
+    </div> 
   </form>
 </div>
 <ul class="dieu-huong">

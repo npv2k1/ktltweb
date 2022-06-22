@@ -28,6 +28,14 @@ window.onclick = function (e) {
   }
 };
 
+function handleSearch(event) {
+  event.preventDefault();
+  console.log("searching");
+  window.location.href = `/search.html?name=${
+    document.getElementById("search").value
+  }`;
+}
+
 
 
 /**

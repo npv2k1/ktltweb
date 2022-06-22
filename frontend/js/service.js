@@ -66,6 +66,16 @@ async function getProductService(categoryId) {
   return products;
 }
 
+async function searchProductService(name){
+    const products = await fetch(
+      `${API_URL}/api/products/search?name=${name}`,
+      {
+        headers: { ...defaultHeader },
+      }
+    ).then((res) => res.json());
+    return products;
+}
+
 // Cart
 async function getCartItemsService() {
   const cartItems = await fetch(`${API_URL}/api/cartItems`, {
