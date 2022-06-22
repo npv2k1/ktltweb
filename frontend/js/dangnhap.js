@@ -26,10 +26,7 @@ function xacnhan(event) {
 
   if (giatriemail == "") {
     email.style.border = "1px solid #ff8471";
-    loi("loi_email", "Email không được bỏ trống");
-  } else if (!kiemTraEmail(giatriemail)) {
-    email.style.border = "1px solid #ff8471";
-    loi("loi_email", "Email sai");
+    loi("loi_email", "Tên đăng nhập không được bỏ trống");
   } else {
     email.style.border = "1px solid #7b5be4";
     loi("loi_email", "");
@@ -46,12 +43,7 @@ function xacnhan(event) {
     loi("loi_mat_khau", "");
   }
 
-  if (
-    giatriemail == "" ||
-    giatrimatkhau == "" ||
-    !kiemTraEmail(giatriemail) ||
-    giatrimatkhau.length < 8
-  ) {
+  if (giatriemail == "" || giatrimatkhau == "" || giatrimatkhau.length < 8) {
     return false;
   } else {
     return true;
@@ -65,6 +57,10 @@ function loi(id, message) {
 //kiểm tra các trường nhập của đăng ký
 function xacnhandangky(event) {
   var giatriemaildangky = document.getElementById("emaildangky").value.trim();
+  var giatriho = document.getElementById("ho").value.trim();
+  var giatriten = document.getElementById("ten").value.trim();
+  var giatrisdt = document.getElementById("sdt").value.trim();
+  var giatridc = document.getElementById("diachi").value.trim();
   var giatritendangky = document.getElementById("tendangky").value.trim();
   var giatrimatkhaudangky = document
     .getElementById("matkhaudangky")
@@ -74,6 +70,10 @@ function xacnhandangky(event) {
     .value.trim();
 
   var emaildangky = document.getElementById("emaildangky");
+  var ho = document.getElementById("ho");
+  var ten = document.getElementById("ten");
+  var sdt = document.getElementById("sdt");
+  var dc = document.getElementById("diachi");
   var tendangky = document.getElementById("tendangky");
   var matkhaudangky = document.getElementById("matkhaudangky");
   var matkhaudangkynhaplai = document.getElementById("matkhaudangkynhaplai");
@@ -89,9 +89,41 @@ function xacnhandangky(event) {
     loidangky("loi_emaildangky", "");
   }
 
+  if (giatriho == "") {
+    ho.style.border = "1px solid #ff8471";
+    loidangky("loi_ho", "Họ không được bỏ trống");
+  } else {
+    ho.style.border = "1px solid #7b5be4";
+    loidangky("loi_ho", "");
+  }
+
+  if (giatriten == "") {
+    ten.style.border = "1px solid #ff8471";
+    loidangky("loi_ten", "Tên không được bỏ trống");
+  } else {
+    ten.style.border = "1px solid #7b5be4";
+    loidangky("loi_ten", "");
+  }
+
+  if (giatrisdt == "") {
+    sdt.style.border = "1px solid #ff8471";
+    loidangky("loi_sdt", "Số điện thoại không được bỏ trống");
+  } else {
+    sdt.style.border = "1px solid #7b5be4";
+    loidangky("loi_sdt", "");
+  }
+
+  if (giatridc == "") {
+    dc.style.border = "1px solid #ff8471";
+    loidangky("loi_dc", "Địa chỉ không được bỏ trống");
+  } else {
+    dc.style.border = "1px solid #7b5be4";
+    loidangky("loi_dc", "");
+  }
+
   if (giatritendangky == "") {
     tendangky.style.border = "1px solid #ff8471";
-    loidangky("loi_tendangky", "Tên không được bỏ trống");
+    loidangky("loi_tendangky", "Tên đăng ký không được bỏ trống");
   } else {
     tendangky.style.border = "1px solid #7b5be4";
     loidangky("loi_tendangky", "");
@@ -111,9 +143,9 @@ function xacnhandangky(event) {
   if (giatrimatkhaudangkynhaplai == "") {
     matkhaudangkynhaplai.style.border = "1px solid #ff8471";
     loidangky("loi_mat_khaudangkynhaplai", "Mật khẩu không được bỏ trống");
-  } else if (giatrimatkhaudangkynhaplai.length < 8) {
+  } else if (giatrimatkhaudangkynhaplai != giatrimatkhaudangky) {
     matkhaudangkynhaplai.style.border = "1px solid #ff8471";
-    loidangky("loi_mat_khaudangkynhaplai", "Mật khẩu phải nhiều hơn 8 kí tự");
+    loidangky("loi_mat_khaudangkynhaplai", "Mật khẩu không trùng khớp");
   } else {
     matkhaudangkynhaplai.style.border = "1px solid #7b5be4";
     loidangky("loi_mat_khaudangkynhaplai", "");
@@ -122,12 +154,16 @@ function xacnhandangky(event) {
 
   if (
     giatriemaildangky == "" ||
-    giatrimatkhaudangky == "" ||
     !kiemTraEmail(giatriemaildangky) ||
-    giatrimatkhaudangky.length < 8 ||
+    giatriho == "" ||
+    giatriten == "" ||
+    giatrisdt == "" ||
+    giatridc == "" ||
     giatritendangky == "" ||
+    giatrimatkhaudangky == "" ||
+    giatrimatkhaudangky.length < 8 ||
     giatrimatkhaudangkynhaplai == "" ||
-    giatrimatkhaudangkynhaplai.length < 8
+    giatrimatkhaudangkynhaplai != giatrimatkhaudangky
   ) {
     return false;
   } else {
@@ -139,27 +175,31 @@ function xacnhandangky(event) {
 function loidangky(id, message) {
   document.getElementById(id).innerHTML = message;
 }
+
 const api = "http://ltweb.2k1.org:8081";
 
 async function dangnhap(event) {
-  event.preventDefault();
-  fetch(`${api}/api/auth/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      username: document.getElementById("email").value,
-      password: document.getElementById("matkhau").value,
-    }),
-  })
-    .then((res) => res.json())
-    .then((dt) => {
-      console.log(dt);
-      localStorage.setItem("token", dt.token);
-      // navigation home
-      window.location.href = "index.html";
-    });
+  try {
+    event.preventDefault();
+    fetch(`${api}/api/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: document.getElementById("email").value,
+        password: document.getElementById("matkhau").value,
+      }),
+    })
+      .then((res) => res.json())
+      .then((dt) => {
+        console.log(dt);
+        localStorage.setItem("token", dt.token);
+        window.location.href = "index.html";
+      });
+  } catch (e) {
+    alert("sai thông tin tài khoản hoặc mật khẩu");
+  }
 }
 async function dangky() {
   const res = await fetch(`${api}/api/auth/register`, {
@@ -169,10 +209,16 @@ async function dangky() {
     },
     body: JSON.stringify({
       email: document.getElementById("emaildangky").value,
+      firstname: document.getElementById("ho").value,
+      lastname: document.getElementById("ten").value,
+      phone: document.getElementById("sdt").value,
+      address: document.getElementById("diachi").value,
       password: document.getElementById("matkhaudangky").value,
       username: document.getElementById("tendangky").value,
     }),
+  }).then((res) => {
+    console.log(res);
+    
   });
-  // reload
   window.location.href = "dangnhap.html";
 }

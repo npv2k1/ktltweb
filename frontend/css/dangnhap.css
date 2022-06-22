@@ -1,11 +1,11 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
-body{
+body {
     height: 100vh;
     display: flex;
     align-items: center;
@@ -13,7 +13,7 @@ body{
     background-color: #40e5f4;
 }
 
-.khung{
+.khung {
     position: relative;
     max-width: 430px;
     width: 100%;
@@ -26,7 +26,7 @@ body{
 
 }
 
-.khung .bieumaus{
+.khung .bieumaus {
     display: flex;
     align-items: center;
     height: 440px;
@@ -35,38 +35,40 @@ body{
 }
 
 
-.khung .bieumau{
+.khung .bieumau {
     width: 50%;
     padding: 30px;
     background-color: #fff;
     transition: margin-left 0.18s ease;
 }
 
-.khung.active .dangnhap{
+.khung.active .dangnhap {
     margin-left: -50%;
-    opacity: 0; 
+    opacity: 0;
     transition: margin-left 0.18s ease, opacity 0.15s ease;
 }
 
-.khung .dangky{
+.khung .dangky {
     opacity: 0;
     transition: opacity 0.09s ease;
 }
-.khung.active .dangky{
+
+.khung.active .dangky {
     opacity: 1;
     transition: opacity 0.2s ease;
 }
 
-.khung.active .bieumaus{
+.khung.active .bieumaus {
     height: 600px;
 }
-.khung .bieumau .tieude{
+
+.khung .bieumau .tieude {
     position: relative;
     font-size: 27px;
     font-weight: 600;
 }
 
-.bieumau .tieude::before{
+.bieumau .tieude::before {
     content: '';
     position: absolute;
     left: 0;
@@ -77,16 +79,17 @@ body{
     border-radius: 25px;
 }
 
-.bieumau .truongnhap{
+.bieumau .truongnhap {
     position: relative;
-    height: 50px;
+    height: 39px;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
 }
 
-.truongnhap input{
+.truongnhap input {
     position: absolute;
-    height: 100%;
+    height: 90%;
     width: 100%;
     padding: 0 35px;
     border: none;
@@ -97,11 +100,23 @@ body{
     transition: all 0.2s ease;
 }
 
-.truongnhap input:is(:focus, :valid){
+.ho {
+    float: left;
+    width: 50% !important;
+}
+
+.ten {
+    margin-left: 186px;
+    clear: both !important;
+    float: right;
+    width: 50% !important;
+}
+
+.truongnhap input:is(:focus, :valid) {
     border-bottom-color: #4070f4;
 }
 
-.truongnhap i{
+.truongnhap i {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -110,37 +125,39 @@ body{
     transition: all 0.2s ease;
 }
 
-.truongnhap input:is(:focus, :valid) ~ i{
+.truongnhap input:is(:focus, :valid)~i {
     color: #4070f4;
 }
 
-.truongnhap i.icon{
+.truongnhap i.icon {
     left: 0;
 }
-.truongnhap i.showHidePw{
+
+.truongnhap i.showHidePw {
     right: 0;
     cursor: pointer;
     padding: 10px;
 }
 
-.bieumau .chu{
+.bieumau .chu {
     color: #333;
     font-size: 14px;
 }
 
-.bieumau a.chu{
+.bieumau a.chu {
     color: #f44070;
     text-decoration: none;
 }
-.bieumau a:hover{
+
+.bieumau a:hover {
     text-decoration: underline;
 }
 
-.bieumau .button{
+.bieumau .button {
     margin-top: 35px;
 }
 
-.bieumau .button input{
+.bieumau .button input {
     border: none;
     color: #fff;
     font-size: 17px;
@@ -152,16 +169,24 @@ body{
     transition: all 0.3s ease;
 }
 
-.button input:hover{
+.button input:hover {
     background-color: #265df2;
 }
 
-.bieumau .dangnhap-dangky{
+.bieumau .dangnhap-dangky {
     margin-top: 30px;
     text-align: center;
 }
-.loi{
-	margin-top: 10px;
-	color: #ff8471;
-	font-size: 14px;
+
+.loi {
+    color: #ff8471;
+    font-size: 14px;
+    margin-bottom: 10px !important;
+}
+
+.loi-ten {
+    clear: both;
+    margin-left: 188px;
+    color: #ff8471;
+    font-size: 14px;
 }
