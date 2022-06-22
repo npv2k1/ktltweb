@@ -62,18 +62,7 @@ public class UserService  implements UserDetailsService {
     }
 
     public User registerUser(UserDTO userDto) {
-//        userRepository
-//                .findOneByUsername(userDto.getUsername().toLowerCase())
-//                .ifPresent(existingUser -> {
-//
-//                    return null;
-//                });
-
-        User user = new User();
-        user.setUsername(userDto.getUsername().toLowerCase());
-        user.setEmail(userDto.getEmail().toLowerCase(Locale.ROOT));
-        user.setFirstname(userDto.getFirstname());
-        user.setLastname(userDto.getLastname());
+        User user = modelMapper.map(userDto, User.class);
         String encryptedPassword = passwordEncoder.encode(userDto.getPassword());
         user.setPassword(encryptedPassword);
         System.out.println(user);
