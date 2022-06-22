@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/bocuc.css">
     <link rel="stylesheet" href="css/thanhtoan.css">
     <link rel="stylesheet" href="css/style.css">
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 
 
 <body>
@@ -18,56 +20,63 @@
             <div class="tt-thanh-toan">
                 <div class="tt-ca-nhan">
 
-                    <div>
+                    <div class="thong-tin-ca-nhan">
                         <div class="tieu-de">
                             <div>
                                 <span>1</span>
                                 <p>Số liên hệ</p>
                             </div>
-                            <button class="nutbtn">Cập nhật</button>
-                        </div>
-                        <div>
-                            <div>Điện thoại:</div>
-                            <input id="sdt" class="sdt-input rounded-lg" value="">
-                        </div>
-                        
-                    <div>
-                        <div class="tieu-de">
-                            <div>
-                                <span>2</span>
-                                <p>Địa chỉ gửi</p>
-                            </div>
-                            <!-- <button class="button-3"> Thêm</button> -->
-                        </div>
-                        <div>
-                            <div class="dia-chi">
-                                <div>
-                                    <p class="loai-dia-chi">Gửi từ:</p>
-                                    <p class="dia-chi-ct">30 Trần Phú, P.Mộ Lao, Hà Đông, Hà Nội</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <div class="tieu-de">
-                            <div>
-                                <span>3</span>
-                                <p>Địa chỉ nhận</p>
-                            </div>
-                            <!-- <button class="button-3"> Thêm</button> -->
+                            <button onclick="capnhat()" class="nutbtn">Cập nhật</button>
                         </div>
                         <div>
                             <div class="dia-chi">
                                 <div id="headlessui-radiogroup-option-13" role="radio" aria-checked="true" tabindex="0">
                                     <div>
-                                        <p class="loai-dia-chi">Nơi nhận:</p>
-                                        <p id="diachi" class="dia-chi-ct">address                                      </p>
+                                        <p class="loai-dia-chi">Số điện thoại: </p>
+                                        <p id="sdt" class="sdt"></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+                        <div>
+                            <div class="tieu-de">
+                                <div>
+                                    <span>2</span>
+                                    <p>Địa chỉ gửi</p>
+                                </div>
+                                <!-- <button class="nutbtn"> Thêm</button> -->
+                            </div>
+                            <div>
+                                <div class="dia-chi">
+                                    <div>
+                                        <p class="loai-dia-chi">Gửi từ:</p>
+                                        <p class="dia-chi-ct">30 Trần Phú, P.Mộ Lao, Hà Đông, Hà Nội</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="tieu-de">
+                                <div>
+                                    <span>3</span>
+                                    <p>Địa chỉ nhận</p>
+                                </div>
+                                <!-- <button class="nutbtn"> Thêm</button> -->
+                            </div>
+                            <div>
+                                <div class="dia-chi">
+                                    <div id="headlessui-radiogroup-option-13" role="radio" aria-checked="true"
+                                        tabindex="0">
+                                        <div>
+                                            <p class="loai-dia-chi">Nơi nhận:</p>
+                                            <p id="diachi" class="dia-chi-ct"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
 
@@ -142,6 +151,7 @@
             </div>
         </div>
     </div>
+    <!--    <script src="js/script.js"></script>-->
 </body>
 <script src="/js/service.js"></script>
 <script src="/js/thanhtoan.js"></script>

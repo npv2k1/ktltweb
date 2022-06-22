@@ -72,11 +72,18 @@ public class OrderService {
      * @return Order
      */
     @Transactional
-    public Order makeOrder() {
+    public Order makeOrder(OrderDTO orderDTO) {
         // Tạo order mới
         Order order = new Order();
         order.setAddress(authService.getCurrentUser().getAddress());
         order.setPhone(authService.getCurrentUser().getPhone());
+        Order order2 = modelMapper.map(orderDTO, Order.class);
+        if (order.getAddress() != null) {
+            order.setAddress(order2.getAddress());
+        }
+        if (order.getPhone() != null) {
+            order.setPhone(order2.getPhone());
+        }
         order.setUsers(authService.getCurrentUser());
         order.setStatus(orderStatusRepository.findById(1L).orElse(null));
         Long totalPrice = 0L;

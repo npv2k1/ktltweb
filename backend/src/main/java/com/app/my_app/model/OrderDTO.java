@@ -17,6 +17,8 @@ public class OrderDTO {
     @Size(max = 255)
     private String address;
 
+    private String phone;
+
     private Long status;
 
     private Long users;

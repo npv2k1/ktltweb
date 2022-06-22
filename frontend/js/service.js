@@ -94,10 +94,14 @@ async function updateCartItemService(cartItemId, quantity) {
 }
 
 // order
-async function createOrderService() {
+async function createOrderService(phone, address) {
   const order = await fetch(`${API_URL}/api/orders/create`, {
     method: "POST",
     headers: { ...defaultHeader },
+    body: JSON.stringify({
+      phone: phone,
+      address: address,
+    }),
   }).then((res) => res.json());
   return order;
 }

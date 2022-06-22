@@ -41,8 +41,8 @@ public class OrderResource {
 
 
     @PostMapping("/create")
-    public Order createOrder() {
-        return orderService.makeOrder();
+    public Order createOrder(@RequestBody @Valid final OrderDTO orderDTO) {
+        return orderService.makeOrder(orderDTO);
     }
 
     @PutMapping("/{id}")
