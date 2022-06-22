@@ -113,7 +113,7 @@ async function capnhat() {
     mainUser.phone = document.getElementById("sdt").value;
     mainUser.address = document.getElementById("diachi").value;
     phone = mainUser.phone;
-    address = mainUser.phone;
+    address = mainUser.address;
 
     html = `  <div class="tieu-de">
                   <div>
